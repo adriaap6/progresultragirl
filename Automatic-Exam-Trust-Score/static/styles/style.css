@@ -1,0 +1,138 @@
+@import url("https://fonts.googleapis.com/css?family=Lato");
+* {
+	margin: 0;
+	padding: 0;
+	font-family: Lato, Arial;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+
+
+
+h1 {
+	font-weight: normal;
+	font-size: 50px;
+	font-weight: normal;
+	text-transform: uppercase;
+}
+
+
+.custom-file-upload-hidden {
+	display: none;
+	visibility: hidden;
+	position: absolute;
+	left: -9999px;
+}
+
+.custom-file-upload {
+	display: block;
+	width: auto;
+	font-size: 16px;
+	margin-top: 30px;
+}
+.custom-file-upload label {
+	display: block;
+	margin-bottom: 5px;
+}
+
+.file-upload-wrapper {
+	position: relative;
+	margin-bottom: 5px;
+}
+
+.file-upload-input {
+	width: 300px;
+	color: #fff;
+	font-size: 16px;
+	padding: 11px 17px;
+	border: none;
+	background-color: #c0392b;
+	-moz-transition: all 0.2s ease-in;
+	-o-transition: all 0.2s ease-in;
+	-webkit-transition: all 0.2s ease-in;
+	transition: all 0.2s ease-in;
+	/*float: left;/
+	/* IE 9 Fix */
+}
+.file-upload-input:hover,
+.file-upload-input:focus {
+	background-color: #ab3326;
+	outline: none;
+}
+
+.file-upload-button {
+	cursor: pointer;
+	display: inline-block;
+	color: #fff;
+	font-size: 16px;
+	text-transform: uppercase;
+	padding: 11px 20px;
+	border: none;
+	margin-left: -1px;
+	background-color: #962d22;
+	/* float: left; */
+	/* IE 9 Fix */
+	-moz-transition: all 0.2s ease-in;
+	-o-transition: all 0.2s ease-in;
+	-webkit-transition: all 0.2s ease-in;
+	transition: all 0.2s ease-in;
+}
+.file-upload-button:hover {
+	background-color: #6d2018;
+}
+* Sidebar
+*/
+
+.sidebar {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 100; /* Behind the navbar */
+	padding: 48px 0 0; /* Height of navbar */
+	box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-sticky {
+	position: relative;
+	top: 0;
+	height: calc(100vh - 48px);
+	padding-top: 0.5rem;
+	overflow-x: hidden;
+	overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+}
+
+@supports ((position: -webkit-sticky) or (position: sticky)) {
+	.sidebar-sticky {
+		position: -webkit-sticky;
+		position: sticky;
+	}
+}
+
+.sidebar .nav-link {
+	font-weight: 500;
+	color: #333;
+}
+
+.sidebar .nav-link .feather {
+	margin-right: 4px;
+	color: #999;
+}
+
+.sidebar .nav-link.active {
+	color: #007bff;
+}
+
+.sidebar .nav-link:hover .feather,
+.sidebar .nav-link.active .feather {
+	color: inherit;
+}
+
+.sidebar-heading {
+	font-size: 0.75rem;
+	text-transform: uppercase;
+}
+
+/*

@@ -1,0 +1,9 @@
+{% autoescape off %} 
+Welcome to Automatic Exam Trust Score Login!!
+Hello {{ fname }}!! Please confirm your email by clicking on the following link.
+
+<a href="http://10.0.140.120:8000/{% url 'verify' uidb64=uid token=token %}">
+  Confirmation Link
+</a>
+
+{% endautoescape %}

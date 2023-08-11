@@ -1,0 +1,319 @@
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Results</title>
+	<style>
+		@import url("https://fonts.googleapis.com/css?family=Lato");
+		* {
+			margin: 0;
+			padding: 0;
+			font-family: Lato, Arial;
+			-moz-box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+		
+		body {
+			padding: 55px 25px;
+			background-color: #a6d2ff;
+		}
+		
+		.custom-file-upload-hidden {
+			display: none;
+			visibility: hidden;
+			position: absolute;
+			left: -9999px;
+		}
+		
+		.custom-file-upload {
+			display: block;
+			width: auto;
+			font-size: 16px;
+			margin-top: 30px;
+		}
+		.custom-file-upload label {
+			display: block;
+			margin-bottom: 5px;
+		}
+		
+		.file-upload-wrapper {
+			position: relative;
+			margin-bottom: 5px;
+		}
+		
+		.file-upload-input {
+			width: 300px;
+			color: #fff;
+			font-size: 16px;
+			padding: 11px 17px;
+			border: none;
+			background-color: #c0392b;
+			-moz-transition: all 0.2s ease-in;
+			-o-transition: all 0.2s ease-in;
+			-webkit-transition: all 0.2s ease-in;
+			transition: all 0.2s ease-in;
+			/*float: left;/
+			/* IE 9 Fix */
+		}
+		.file-upload-input:hover,
+		.file-upload-input:focus {
+			background-color: #ab3326;
+			outline: none;
+		}
+		
+		.file-upload-button {
+			cursor: pointer;
+			display: inline-block;
+			color: #fff;
+			font-size: 16px;
+			text-transform: uppercase;
+			padding: 11px 20px;
+			border: none;
+			margin-left: -1px;
+			background-color: #962d22;
+			/* float: left; */
+			/* IE 9 Fix */
+			-moz-transition: all 0.2s ease-in;
+			-o-transition: all 0.2s ease-in;
+			-webkit-transition: all 0.2s ease-in;
+			transition: all 0.2s ease-in;
+		}
+		.file-upload-button:hover {
+			background-color: #a6d2ff;
+		}
+		h1{
+			color: black;
+		}
+	</style>
+</head>
+<body>
+	<div class="container-fluid">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="#">
+					<img src="{% static 'images/logo.png' %}" alt="" width="30" height="24" class="d-inline-block align-text-top">
+					Bootstrap
+				</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						
+					</ul>
+					<form class="d-flex">
+						<a  href="/" class="btn btn-primary" type="submit">Kembali</a>
+					</form>
+				</div>
+			</div>
+		</nav>
+		
+		<div class="mt-2">
+			<div class="card text-center">
+				<div class="card-body">
+					<div class="row">
+						<div class="col-lg-4">
+							<div class="card text-center">
+								<div class="card-header"><span>Predict 1</span></div>
+								<div class="card-body">
+									<h1 >ANN Has Predicted that {{ANN_Prediction}}</h1>
+								</div>
+							</div>
+						</div>	
+						<div class="col-lg-4">
+							<div class="card text-center">
+								<div class="card-header"><span>Predict 2</span></div>
+								<div class="card-body">
+									<h1>CNN1D Has Predicted that {{CNN1D_Prediction}}</h1>
+								</div>
+							</div>
+						</div>	
+						<div class="col-lg-4">
+							<div class="card text-center">
+								<div class="card-header"><span>Predict</span></div>
+								<div class="card-body">
+									<h1>CNN2D Has Predicted that {{CNN2D_Prediction}}</h1>
+								</div>
+							</div>
+						</div>	
+					</div>	
+				</div>
+			</div>
+		</div>
+		<nav class="navbar fixed-bottom navbar-light bg-light">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="#">Fixed bottom</a>
+			</div>
+		</nav>
+	</div>
+	{% comment %} <center>
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<h1>ANN Has Predicted that {{ANN_Prediction}}</h1>
+		<br />
+		<h1>CNN1D Has Predicted that {{CNN1D_Prediction}}</h1>
+		<br />
+		<h1>CNN2D Has Predicted that {{CNN2D_Prediction}}</h1>
+		<br />
+	</center> {% endcomment %}
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<!-- <script src="../static/js/script.js"></script> -->
+	<script>
+		(function ($) {
+			// Browser supports HTML5 multiple file?
+			var multipleSupport = typeof $("<input/>")[0].multiple !== "undefined",
+			isIE = /msie/i.test(navigator.userAgent);
+			
+			$.fn.customFile = function () {
+				return this.each(function () {
+					var $file = $(this).addClass("custom-file-upload-hidden"), // the original file input
+					$wrap = $('<div class="file-upload-wrapper">'),
+						$input = $('<input type="text" class="file-upload-input" />'),
+						// Button that will be used in non-IE browsers
+						$button = $(
+						'<button type="button" class="file-upload-button">Select a File</button>'
+						),
+						// Hack for IE
+						$label = $(
+						'<label class="file-upload-button" for="' +
+						$file[0].id +
+						'">Select a File</label>'
+						);
+						
+						// Hide by shifting to the left so we
+						// can still trigger events
+						$file.css({
+							position: "absolute",
+							left: "-9999px",
+						});
+						
+						$wrap
+						.insertAfter($file)
+						.append($file, $input, isIE ? $label : $button);
+						
+						// Prevent focus
+						$file.attr("tabIndex", -1);
+						$button.attr("tabIndex", -1);
+						
+						$button.click(function () {
+							$file.focus().click(); // Open dialog
+						});
+						
+						$file.change(function () {
+							var files = [],
+							fileArr,
+							filename;
+							
+							// If multiple is supported then extract
+							// all filenames from the file array
+							if (multipleSupport) {
+								fileArr = $file[0].files;
+								for (var i = 0, len = fileArr.length; i < len; i++) {
+									files.push(fileArr[i].name);
+								}
+								filename = files.join(", ");
+								
+								// If not supported then just take the value
+								// and remove the path to just show the filename
+							} else {
+								filename = $file.val().split("\\").pop();
+							}
+							
+							$input
+							.val(filename) // Set the value
+							.attr("title", filename) // Show filename in title tootlip
+							.focus(); // Regain focus
+						});
+						
+						$input.on({
+							blur: function () {
+								$file.trigger("blur");
+							},
+							keydown: function (e) {
+								if (e.which === 13) {
+									// Enter
+									if (!isIE) {
+										$file.trigger("click");
+									}
+								} else if (e.which === 8 || e.which === 46) {
+									// Backspace & Del
+									// On some browsers the value is read-only
+									// with this trick we remove the old input and add
+									// a clean clone with all the original events attached
+									$file.replaceWith(($file = $file.clone(true)));
+									$file.trigger("change");
+									$input.val("");
+								} else if (e.which === 9) {
+									// TAB
+									return;
+								} else {
+									// All other keys
+									return false;
+								}
+							},
+						});
+					});
+				};
+				
+				// Old browser fallback
+				if (!multipleSupport) {
+					$(document).on("change", "input.customfile", function () {
+						var $this = $(this),
+						// Create a unique ID so we
+						// can attach the label to the input
+						uniqId = "customfile_" + new Date().getTime(),
+						$wrap = $this.parent(),
+						// Filter empty input
+						$inputs = $wrap
+						.siblings()
+						.find(".file-upload-input")
+						.filter(function () {
+							return !this.value;
+						}),
+						$file = $(
+						'<input type="file" id="' +
+						uniqId +
+						'" name="' +
+						$this.attr("name") +
+						'"/>'
+						);
+						
+						// 1ms timeout so it runs after all other events
+						// that modify the value have triggered
+						setTimeout(function () {
+							// Add a new input
+							if ($this.val()) {
+								// Check for empty fields to prevent
+								// creating new inputs when changing files
+								if (!$inputs.length) {
+									$wrap.after($file);
+									$file.customFile();
+								}
+								// Remove and reorganize inputs
+							} else {
+								$inputs.parent().remove();
+								// Move the input so it's always last on the list
+								$wrap.appendTo($wrap.parent());
+								$wrap.find("input").focus();
+							}
+						}, 1);
+					});
+				}
+			})(jQuery);
+			
+			$("input[type=file]").customFile();
+		</script>
+	</body>
+	</html>
+	
